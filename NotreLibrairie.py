@@ -1,0 +1,11 @@
+directory = "speeches/"
+CleanedDirectory = 'cleaned/'
+OccurencesMotsTexte = {}
+MaListeDeDico = []
+DictionnaireIDF = {}
+files_names = []
+MatriceTF_IDF = []
+ListeTF = []
+ListeIDF = []
+ListeMots = []
+NomsPresidents = []
