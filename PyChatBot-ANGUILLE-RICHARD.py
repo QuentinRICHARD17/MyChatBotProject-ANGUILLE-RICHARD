@@ -36,3 +36,13 @@ AfficheMotLePlusRepeteParUnPresident(input("Pour quel nom de président voulez v
 print()
 print("Fonctionalité n°4 Noms des présidents qui ont parlé de nation ainsi que de celui qui l'a répété le plus de fois :")
 ExtraireMotFrequent(files_names, MaListeDeDico)
+
+#Demander à l'utilisateur sa question :
+print()
+print("Quel est votre question ? :")
+Question = input("")
+with open("EmplacementDeLaQuestion.txt", "w", encoding="utf-8") as f:
+    for i in Question:
+        f.write(i)
+f.close()
+ConvertionDesMajEnMin('EmplacementDeLaQuestion.txt', 'EmplacementDeLaQuestion.txt')
