@@ -1,7 +1,7 @@
 directory = "speeches/"
 CleanedDirectory = 'cleaned/'
 OccurencesMotsTexte = {}
-MaListeDeDico = []
+ListeDicoTFtextes = []
 DictionnaireIDF = {}
 files_names = []
 MatriceTF_IDF = []
@@ -9,3 +9,5 @@ ListeTF = []
 ListeIDF = []
 ListeMots = []
 NomsPresidents = []
+ListMotsPasImportant = []
+
