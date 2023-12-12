@@ -27,3 +27,9 @@ questionTokenise = TokenisationQuestion(input("Quel est votre question ?:"))
 listeMotsQuestionDansCorpus = IdentificationMotsQuestionDocuments(questionTokenise, ListeDicoTFtextes)
 TFquestion(listeMotsQuestionDansCorpus)
 '''
+
+
+
+
+
+

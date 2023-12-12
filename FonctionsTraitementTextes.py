@@ -32,3 +32,7 @@ def SuppressionPonctuationEtEspacesTextes(MonContenuMinuscule):
     MonContenuMinuscule = ' '.join(mots)
 
     return MonContenuMinuscule
+
+
+
+

@@ -17,3 +17,4 @@ def AfficherNomsPresidents():
         if name not in NomsPresidents:
             NomsPresidents.append(name)
     print(NomsPresidents)
+

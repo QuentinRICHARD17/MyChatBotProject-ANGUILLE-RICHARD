@@ -74,3 +74,5 @@ def TransposéMatriceTF_IDF(matrice):
             matriceTransposee[j].append(matrice[i][j])
 
     return matriceTransposee
+
+

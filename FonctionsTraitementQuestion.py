@@ -17,6 +17,8 @@ def TokenisationQuestion(question):
 
 
 
+
+
 def SuppressionPonctuationEtEspacesQuestion(questionEnMinuscule):
 
     # Créer une chaîne de caractères contenant tous les caractères de ponctuation à supprimer grâce a la bibliothèque string qui fournit une chaîne prédéfinie punctuation qui contient ces caractères.
