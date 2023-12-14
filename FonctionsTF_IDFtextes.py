@@ -1,7 +1,7 @@
 from math import log
 from NotreLibrairie import *
 
-def CalculMatriceTF_IDF():
+def CalculMatriceTF_IDFtexte():
     MatriceTF_IDF.append([' '] + [i + 1 for i in range(len(ListeDicoTFtextes))])
 
     for cle in DictionnaireIDF.keys():

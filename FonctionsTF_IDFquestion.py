@@ -1,29 +1,28 @@
-from math import log
 def TFquestion(listeMotsQuestionDansCorpus):
 
-    DicoScoreTFquestion = {}
+    DicoTFquestion = {}
 
     for mot in listeMotsQuestionDansCorpus:
-        if listeMotsQuestionDansCorpus[mot] in DicoScoreTFquestion:
-            DicoScoreTFquestion[mot] += 1
+        if mot in DicoTFquestion:
+            DicoTFquestion[mot] += 1
         else:
-            DicoScoreTFquestion[mot] = 1
+            DicoTFquestion[mot] = 1
+    for mot, val in DicoTFquestion.items():
+        DicoTFquestion[mot] /= 10
 
-    return DicoScoreTFquestion
+    return DicoTFquestion
 
 
 
-def IDFquestion(DicoScoreTFquestion):
+def MatriceTF_IDFquestion(DicoScoreTFquestion, matriceTransposee):
 
-    DicoIDF = {}
+    for i in range(len(matriceTransposee)):
+        for j in range(len(matriceTransposee[i])):
+            
 
-    for cle in DicoScoreTFquestion.keys():
-        if cle in DicoIDF:
-            DicoIDF[cle] += 1
-        else:
-            DicoIDF[cle] = 1
-    for mot , occurence in DicoIDF.items():
-        DicoIDF[mot] = log(len(DicoScoreTFquestion)/occurence)
+
+
+
 
 
 

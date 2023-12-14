@@ -74,4 +74,4 @@ def IdentificationMotsQuestionDocuments(questionTokenise, ListeDicoTFtextes):
             else:
                 j += 1
 
-    print(listeMotsQuestionDansCorpus)
+    return listeMotsQuestionDansCorpus
