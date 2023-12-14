@@ -32,22 +32,42 @@ def AfficherMotsAvecScoreTF_IDFLePlusHaut(MatriceTF_IDF):
 #3
 
 def AfficheMotLePlusRepeteParUnPresident(nom):
-    L = []
+    L =[]
+    DCP = False  # Variable pour indiquer si le nom a été trouvé
+
     for i in range(len(files_names)):
         if nom in files_names[i]:
+            DCP = True  # Le nom a été trouvé
             L.append(i)
+
+    if not DCP:
+        print("Il n'y a pas de document qui porte le nom de", nom)
+        return
 
     print("Le(s) mot(s) le(s) plus répété(s) par", nom, "est(sont):")
     for j in range(len(L)):
-        KeyMaxVal = max(ListeDicoTFtextes[L[j]] , key = ListeDicoTFtextes[L[j]].get)
-        for cle , valeur in ListeDicoTFtextes[L[j]].items():
+        KeyMaxVal = max(ListeDicoTFtextes[L[j]], key=ListeDicoTFtextes[L[j]].get)
+        for cle, valeur in ListeDicoTFtextes[L[j]].items():
             if valeur == ListeDicoTFtextes[L[j]][KeyMaxVal]:
                 print("Dans le texte", j, ':', cle)
-
 #4
+def ExtraireMotFrequent(liste_textes, liste_dictionnaire):
+    mot_recherche = "nation"
+    nb_max = 0
+    texte_max = None
 
+    for texte, dictionnaire in zip(liste_textes, liste_dictionnaire):
+        if mot_recherche in dictionnaire:
+            print(mot_recherche, " est présent dans", texte)
 
+            if dictionnaire[mot_recherche] > nb_max:
+                nb_max = dictionnaire[mot_recherche]
+                texte_max = texte
 
+    if texte_max:
+        print(mot_recherche, " est le plus répété dans", texte_max, " ( nombre de répétitions : ", nb_max, ").")
+    else:
+        print(mot_recherche, " n'a été trouvé dans aucun texte.")
 #5
 
 
@@ -65,10 +85,3 @@ def MotsUtiliséParToutLesPresidents():
         for mot in motsASupprimer:
             ListMotsOmnipresent.remove(mot)
     print(ListMotsOmnipresent)
-
-
-
-
-
-
-
