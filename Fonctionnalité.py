@@ -45,7 +45,23 @@ def AfficheMotLePlusRepeteParUnPresident(nom):
                 print("Dans le texte", j, ':', cle)
 
 #4
+def ExtraireMotFrequent(liste_textes, liste_dictionnaire):
+    mot_recherche = "nation"
+    nb_max = 0
+    texte_max = None
 
+    for texte, dictionnaire in zip(liste_textes, liste_dictionnaire):
+        if mot_recherche in dictionnaire:
+            print(mot_recherche, " est présent dans", texte)
+
+            if dictionnaire[mot_recherche] > nb_max:
+                nb_max = dictionnaire[mot_recherche]
+                texte_max = texte
+
+    if texte_max:
+        print(mot_recherche, " est le plus répété dans", texte_max, " ( nombre de répétitions : ", nb_max, ").")
+    else:
+        print(mot_recherche, " n'a été trouvé dans aucun texte.")
 #5
 
 
@@ -63,10 +79,3 @@ def MotsUtiliséParToutLesPresidents():
         for mot in motsASupprimer:
             ListMotsOmnipresent.remove(mot)
     print(ListMotsOmnipresent)
-
-
-
-
-
-
-
