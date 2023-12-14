@@ -14,11 +14,20 @@ def TFquestion(listeMotsQuestionDansCorpus):
 
 
 
-def MatriceTF_IDFquestion(DicoScoreTFquestion, matriceTransposee):
+def MatriceTF_IDFquestion(DicoTFquestion, matriceTransposee):
 
-    for i in range(len(matriceTransposee)):
-        for j in range(len(matriceTransposee[i])):
-            
+    matriceTF_IDFquestion = matriceTransposee
+
+    # On parcourt la matrice transposée en mettant des 0 si le mot n'est pas dans la question et en multipliant le score IDF par le score TF du mot de la question si le mot est bien dans la question
+    for i in range(1, len(matriceTF_IDFquestion)):
+        for j in range(1, len(matriceTF_IDFquestion[i])):
+            if matriceTF_IDFquestion[0][j] not in DicoTFquestion:
+                matriceTF_IDFquestion[i][j] = 0
+            else:
+                matriceTF_IDFquestion[i][j] = matriceTransposee[i][j] * DicoTFquestion[matriceTF_IDFquestion[0][j]]
+
+    return matriceTF_IDFquestion
+
 
 
 

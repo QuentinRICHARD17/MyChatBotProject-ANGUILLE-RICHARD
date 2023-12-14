@@ -72,7 +72,11 @@ def TransposéMatriceTF_IDF(matrice):
     for i in range(nombre_lignes):
         for j in range(nombre_colonnes):
             matriceTransposee[j].append(matrice[i][j])
-
+    '''
+    # Afficher la matrice
+    for j in range(len(matriceTransposee)):
+        for k in range(len(matriceTransposee[j])):
+            print(matriceTransposee[j][k], end=' ')
+        print()
+    '''
     return matriceTransposee
-
-

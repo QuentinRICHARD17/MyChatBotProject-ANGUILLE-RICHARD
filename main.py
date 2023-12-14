@@ -16,9 +16,9 @@ for i in range(len(files_names)):
     CalculScoreTF(CleanedDirectory + files_names[i])
 CalculScoreIDF(ListeDicoTFtextes)
 print("La Matrice :")
-matriceTF_IDF = CalculMatriceTF_IDF()
+matriceTF_IDF = CalculMatriceTF_IDFtexte()
 print()
-TransposéMatriceTF_IDF(matriceTF_IDF)
+matriceTransposee = TransposéMatriceTF_IDF(matriceTF_IDF)
 
 print("Fonctionalité n°1 Mots les moins importants :")
 AfficherMotsLesMoinsImportants(MatriceTF_IDF)
@@ -42,4 +42,10 @@ print()
 questionTokenise = TokenisationQuestion(input("Quel est votre question ?:"))
 listeMotsQuestionDansCorpus = IdentificationMotsQuestionDocuments(questionTokenise, ListeDicoTFtextes)
 print("Mots de la question qui sont dans le corpus de document :")
-TFquestion(listeMotsQuestionDansCorpus)
+DicoTFquestion = TFquestion(listeMotsQuestionDansCorpus)
+MatriceTF_IDFquestion(DicoTFquestion, matriceTransposee)
+
+
+
+
+
