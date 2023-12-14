@@ -69,8 +69,18 @@ def ExtraireMotFrequent(liste_textes, liste_dictionnaire):
     else:
         print(mot_recherche, " n'a été trouvé dans aucun texte.")
 #5
-
-
+compteur = 0
+def ParlerEcologieEtClimat(FichierEntree):
+    global compteur
+    mot1 = "écologie"
+    mot2 = "climat"
+    if compteur == 0:
+        with open(FichierEntree, 'r', encoding='utf-8') as f:
+            contenu = f.read()
+            if mot1 in contenu or mot2 in contenu:
+                compteur += 1
+            if compteur == 1:
+                print("Le premier texte à parler du climat/écologie est celui de :", FichierEntree)
 
 #6
 
