@@ -1,12 +1,7 @@
-from FonctionsExtractionNomsPresidents import *
-from NotreLibrairie import *
-from FonctionsTraitementTextes import *
 from Fonctionnalité import *
 from FonctionsTF_IDFtextes import *
 from FonctionsTraitementQuestion import *
 from FonctionsTF_IDFquestion import *
-
-# Utilisation
 
 files_names = list_of_files(directory, "txt")
 print("Listes des noms des textes :")
@@ -37,8 +32,10 @@ print()
 print("Fonctionalité n°4 Noms des présidents qui ont parlé de nation ainsi que de celui qui l'a répété le plus de fois :")
 ExtraireMotFrequent(files_names, ListeDicoTFtextes)
 print()
-print("Fonctionalité n°5 :")
-
+print("Fonctionalité n°5 Indiquer le premier président à parler du climat et/ou de l’écologie:")
+for x in range(len(files_names)):
+    ParlerEcologieEtClimat(CleanedDirectory + files_names[x])
+print()
 print("Fonctionnalité n°6 le(s) mot(s) que tous les présidents ont évoqués (Hormis les mots dits « non importants ») :")
 MotsUtiliséParToutLesPresidents()
 print()
