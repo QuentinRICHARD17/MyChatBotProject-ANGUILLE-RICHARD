@@ -62,16 +62,11 @@ def ListerMotsQuestion(questionTraite):
 
 def IdentificationMotsQuestionDocuments(questionTokenise, ListeDicoTFtextes):
 
-    listeMotsQuestionDansCorpus = []
+    motsPresent = set()
 
-    # Parcourir texte pour voir si au moins un d'entre eux contient le mot de la question
-    for i in range(len(questionTokenise)):
-        j = 0
-        while j < len(ListeDicoTFtextes):
-            if questionTokenise[i] in ListeDicoTFtextes[j]:
-                listeMotsQuestionDansCorpus.append(questionTokenise[i])
-                j = len(ListeDicoTFtextes)
-            else:
-                j += 1
+    for mot in questionTokenise:
+        for dico in ListeDicoTFtextes:
+            if mot in dico:
+                motsPresent.add(mot)
 
-    return listeMotsQuestionDansCorpus
+    return list(motsPresent)
