@@ -41,14 +41,5 @@ def MettreAme(ListeQuestion, reponse):
         if i in question_starters.keys():
             MotDebut = question_starters[i]
             print(MotDebut + reponse)
-
-
-
-
-
-
-
-
-
-
-
+        else:
+            print(reponse)
