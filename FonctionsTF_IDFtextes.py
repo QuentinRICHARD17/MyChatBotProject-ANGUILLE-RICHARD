@@ -1,26 +1,27 @@
 from math import log
 from NotreLibrairie import *
 
-def CalculMatriceTF_IDFtexte():
-    MatriceTF_IDF.append([' '] + [i + 1 for i in range(len(ListeDicoTFtextes))])
+def CalculMatriceTF_IDF(DictionnaireIDF, ListeDicoTFtextes):
+    matriceTF_IDF = []
 
     for cle in DictionnaireIDF.keys():
-        L = [cle]
+        ligne = []
         for i in range(len(ListeDicoTFtextes)):
             if cle in ListeDicoTFtextes[i]:
-                L.append(ListeDicoTFtextes[i][cle] * DictionnaireIDF[cle])
+                ligne.append(ListeDicoTFtextes[i][cle] * DictionnaireIDF[cle])
             else:
-                L.append(0.0)
-        MatriceTF_IDF.append(L)
+                ligne.append(0.0)
+        matriceTF_IDF.append(ligne)
 
-    return MatriceTF_IDF
     '''
     # Afficher la matrice
-    for j in range(len(MatriceTF_IDF)):
-        for k in range(len(MatriceTF_IDF[j])):
-            print(MatriceTF_IDF[j][k], end=' ')
+    for j in range(len(matriceTF_IDF)):
+        for k in range(len(matriceTF_IDF[j])):
+            print(matriceTF_IDF[j][k], end=' ')
         print()
     '''
+    return matriceTF_IDF
+
 
 
 def CalculScoreTF(CleanedDirectory):
@@ -43,24 +44,32 @@ def CalculScoreTF(CleanedDirectory):
                 OccurencesMotsTexte[mot] = 1
         i = j + 1
     ListeDicoTFtextes.append(OccurencesMotsTexte)
+
     return ListeDicoTFtextes
 
 
-
 def CalculScoreIDF(ListeDicoTFtextes):
+
+    DictionnaireIDF = {}
+
     for i in range(len(ListeDicoTFtextes)):
         for cle in ListeDicoTFtextes[i].keys():
             if cle in DictionnaireIDF:
                 DictionnaireIDF[cle] += 1
             else:
                 DictionnaireIDF[cle] = 1
-    for mot , occurence in DictionnaireIDF.items():
-        DictionnaireIDF[mot] = log(len(ListeDicoTFtextes)/occurence)
+
+    total_textes = len(ListeDicoTFtextes)
+
+    for mot, occurence in DictionnaireIDF.items():
+        DictionnaireIDF[mot] = log(total_textes / occurence)
+
     return DictionnaireIDF
 
 
 
-def TransposéMatriceTF_IDF(matrice):
+
+def TransposeeMatriceTF_IDF(matrice):
 
     nombre_lignes = len(matrice)
     nombre_colonnes = len(matrice[0])
@@ -80,3 +89,6 @@ def TransposéMatriceTF_IDF(matrice):
         print()
     '''
     return matriceTransposee
+
+
+

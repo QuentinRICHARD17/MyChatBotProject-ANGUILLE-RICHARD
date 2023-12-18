@@ -2,6 +2,8 @@ from Fonctionnalité import *
 from FonctionsTF_IDFtextes import *
 from FonctionsTraitementQuestion import *
 from FonctionsTF_IDFquestion import *
+from FonctionsCalculSimilarité import *
+from FonctionsGenerationReponses import *
 
 files_names = list_of_files(directory, "txt")
 print("Listes des noms des textes :")
@@ -14,17 +16,16 @@ print()
 for i in range(len(files_names)):
     ConvertionDesMajEnMinTextes(directory + files_names[i], CleanedDirectory + files_names[i])
     CalculScoreTF(CleanedDirectory + files_names[i])
-CalculScoreIDF(ListeDicoTFtextes)
+DictionnaireIDF = CalculScoreIDF(ListeDicoTFtextes)
 print("La Matrice :")
-matriceTF_IDF = CalculMatriceTF_IDFtexte()
+matriceTF_IDF = CalculMatriceTF_IDF(DictionnaireIDF, ListeDicoTFtextes)
 print()
-matriceTransposee = TransposéMatriceTF_IDF(matriceTF_IDF)
-
+matriceTransposee = TransposeeMatriceTF_IDF(matriceTF_IDF)
 print("Fonctionalité n°1 Mots les moins importants :")
-AfficherMotsLesMoinsImportants(MatriceTF_IDF)
+print(AfficherMotsLesMoinsImportants(DictionnaireIDF, matriceTF_IDF))
 print()
-print("Fonctionalité n°2 Mots le score TF-IDF le plus haut :")
-AfficherMotsAvecScoreTF_IDFLePlusHaut(MatriceTF_IDF)
+print("Fonctionalité n°2 Mots avec le score TF-IDF le plus haut :")
+print(AfficherMotsAvecScoreTF_IDFLePlusHaut(DictionnaireIDF, matriceTF_IDF))
 print()
 print("Fonctionalité n°3 Mots le plus répétéer par le président de votre choix : ")
 AfficheMotLePlusRepeteParUnPresident(input("Pour quel nom de président voulez vous connaitre quel mot a été répété le plus de fois :"))
@@ -40,10 +41,22 @@ print("Fonctionnalité n°6 le(s) mot(s) que tous les présidents ont évoqués 
 MotsUtiliséParToutLesPresidents()
 print()
 questionTokenise = TokenisationQuestion(input("Quel est votre question ?:"))
+print()
 listeMotsQuestionDansCorpus = IdentificationMotsQuestionDocuments(questionTokenise, ListeDicoTFtextes)
 print("Mots de la question qui sont dans le corpus de document :")
+print(listeMotsQuestionDansCorpus)
+print()
 DicoTFquestion = TFquestion(listeMotsQuestionDansCorpus)
-MatriceTF_IDFquestion(DicoTFquestion, matriceTransposee)
+vecteurQuestion = vecteurTF_IDFquestion(DicoTFquestion, DictionnaireIDF)
+produitScalaire(matriceTransposee, vecteurQuestion)
+NormeVecteurMatrice(matriceTransposee)
+NormeVecteurQuestion(vecteurQuestion)
+CalculSimilarite(matriceTransposee, vecteurQuestion)
+documentLePlusPertinent(matriceTransposee, vecteurQuestion, files_names)
+TF_IDFquestionLePlusEleve(vecteurQuestion)
+CalculScoreIDF(ListeDicoTFtextes)
+reponse = generationReponses(matriceTransposee, vecteurQuestion, files_names)
+print(reponse)
 
 
 
