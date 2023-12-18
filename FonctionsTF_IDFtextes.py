@@ -1,6 +1,7 @@
 from math import log
 from NotreLibrairie import *
 
+
 def CalculMatriceTF_IDF(DictionnaireIDF, ListeDicoTFtextes):
 
     MatriceTF_IDF = []
@@ -15,15 +16,16 @@ def CalculMatriceTF_IDF(DictionnaireIDF, ListeDicoTFtextes):
             else:
                 L.append(0.0)
         MatriceTF_IDF.append(L)
-    '''
+    
     # Afficher la matrice
-    for j in range(len(MatriceTF_IDF)):
-        for k in range(len(MatriceTF_IDF[j])):
-            print(MatriceTF_IDF[j][k], end=' ')
-        print()
-    '''
+    rep = input("Voulez vous voir la matrice ? (répondre par 'oui' ou 'non') :")
+    if rep == "oui":
+        for j in range(len(MatriceTF_IDF)):
+            for k in range(len(MatriceTF_IDF[j])):
+                print(MatriceTF_IDF[j][k], end=' ')
+            print()
+    
     return MatriceTF_IDF
-
 
 
 def CalculScoreTF(CleanedDirectory):
@@ -49,7 +51,6 @@ def CalculScoreTF(CleanedDirectory):
     return ListeDicoTFtextes
 
 
-
 def CalculScoreIDF(ListeDicoTFtextes):
 
     DictionnaireIDF = {}
@@ -63,7 +64,6 @@ def CalculScoreIDF(ListeDicoTFtextes):
     for mot , occurence in DictionnaireIDF.items():
         DictionnaireIDF[mot] = log(len(ListeDicoTFtextes)/occurence)
     return DictionnaireIDF
-
 
 
 def TransposeeMatriceTF_IDF(matrice):
@@ -80,7 +80,7 @@ def TransposeeMatriceTF_IDF(matrice):
             matriceTransposee[j].append(matrice[i][j])
 
     # Afficher la matrice
-    rep = input("Voulez vous voir la matrice ? (répondre par 'oui' ou 'non') :")
+    rep = input("Voulez vous voir la matrice transposée ? (répondre par 'oui' ou 'non') :")
     if rep == "oui":
         for j in range(len(matriceTransposee)):
             for k in range(len(matriceTransposee[j])):
