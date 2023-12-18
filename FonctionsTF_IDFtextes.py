@@ -1,7 +1,10 @@
 from math import log
 from NotreLibrairie import *
 
-def CalculMatriceTF_IDF():
+def CalculMatriceTF_IDF(DictionnaireIDF, ListeDicoTFtextes):
+
+    MatriceTF_IDF = []
+
     MatriceTF_IDF.append([' '] + [i + 1 for i in range(len(ListeDicoTFtextes))])
 
     for cle in DictionnaireIDF.keys():
@@ -12,8 +15,6 @@ def CalculMatriceTF_IDF():
             else:
                 L.append(0.0)
         MatriceTF_IDF.append(L)
-
-    return MatriceTF_IDF
     '''
     # Afficher la matrice
     for j in range(len(MatriceTF_IDF)):
@@ -21,6 +22,8 @@ def CalculMatriceTF_IDF():
             print(MatriceTF_IDF[j][k], end=' ')
         print()
     '''
+    return MatriceTF_IDF
+
 
 
 def CalculScoreTF(CleanedDirectory):
@@ -48,6 +51,9 @@ def CalculScoreTF(CleanedDirectory):
 
 
 def CalculScoreIDF(ListeDicoTFtextes):
+
+    DictionnaireIDF = {}
+
     for i in range(len(ListeDicoTFtextes)):
         for cle in ListeDicoTFtextes[i].keys():
             if cle in DictionnaireIDF:
@@ -60,7 +66,7 @@ def CalculScoreIDF(ListeDicoTFtextes):
 
 
 
-def TransposéMatriceTF_IDF(matrice):
+def TransposeeMatriceTF_IDF(matrice):
 
     nombre_lignes = len(matrice)
     nombre_colonnes = len(matrice[0])
@@ -72,7 +78,11 @@ def TransposéMatriceTF_IDF(matrice):
     for i in range(nombre_lignes):
         for j in range(nombre_colonnes):
             matriceTransposee[j].append(matrice[i][j])
-
+    '''
+    # Afficher la matrice
+    for j in range(len(matriceTransposee)):
+        for k in range(len(matriceTransposee[j])):
+            print(matriceTransposee[j][k], end=' ')
+        print()
+    '''
     return matriceTransposee
-
-

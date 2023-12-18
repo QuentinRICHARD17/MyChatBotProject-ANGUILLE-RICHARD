@@ -1,29 +1,38 @@
-from math import log
 def TFquestion(listeMotsQuestionDansCorpus):
 
-    DicoScoreTFquestion = {}
+    DicoTFquestion = {}
 
     for mot in listeMotsQuestionDansCorpus:
-        if listeMotsQuestionDansCorpus[mot] in DicoScoreTFquestion:
-            DicoScoreTFquestion[mot] += 1
+        if mot in DicoTFquestion:
+            DicoTFquestion[mot] += 1
         else:
-            DicoScoreTFquestion[mot] = 1
+            DicoTFquestion[mot] = 1
 
-    return DicoScoreTFquestion
+    return DicoTFquestion
 
 
 
-def IDFquestion(DicoScoreTFquestion):
+def vecteurTF_IDFquestion(DicoTFquestion, DicoIDF):
 
-    DicoIDF = {}
+    vecteurQuestion = [[]]
 
-    for cle in DicoScoreTFquestion.keys():
-        if cle in DicoIDF:
-            DicoIDF[cle] += 1
+    for mot, IDF in DicoIDF.items():
+        vecteurQuestion[0].append(mot)
+        if mot in DicoTFquestion:
+            vecteurQuestion.append(IDF * DicoTFquestion[mot])
         else:
-            DicoIDF[cle] = 1
-    for mot , occurence in DicoIDF.items():
-        DicoIDF[mot] = log(len(DicoScoreTFquestion)/occurence)
+            vecteurQuestion.append(0)
+    '''
+    # Afficher vecteur
+    print(vecteurQuestion[0])
+    for val in range(1, len(vecteurQuestion)):
+        print(vecteurQuestion[val], end = ' ')
+    '''
+    return vecteurQuestion
+
+
+
+
 
 
 
