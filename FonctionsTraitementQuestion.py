@@ -1,6 +1,7 @@
 from FonctionsTraitementTextes import *
 import string
 from FonctionsTF_IDFtextes import CalculScoreTF
+
 def TokenisationQuestion(question):
 
     # Convertir le contenu en minuscules avec la fonction lower
@@ -13,10 +14,6 @@ def TokenisationQuestion(question):
     questionTokenise = ListerMotsQuestion(questionTraite)
 
     return questionTokenise
-
-
-
-
 
 
 def SuppressionPonctuationEtEspacesQuestion(questionEnMinuscule):
@@ -33,7 +30,6 @@ def SuppressionPonctuationEtEspacesQuestion(questionEnMinuscule):
     questionEnMinuscule = ' '.join(mots)
 
     return questionEnMinuscule
-
 
 
 def ListerMotsQuestion(questionTraite):
@@ -57,7 +53,6 @@ def ListerMotsQuestion(questionTraite):
         i = j + 1
 
     return listeMotsQuestion
-
 
 
 def IdentificationMotsQuestionDocuments(questionTokenise, ListeDicoTFtextes):
