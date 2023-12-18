@@ -22,12 +22,14 @@ def vecteurTF_IDFquestion(DicoTFquestion, DicoIDF):
             vecteurQuestion.append(IDF * DicoTFquestion[mot])
         else:
             vecteurQuestion.append(0)
-    '''
+    
     # Afficher vecteur
-    print(vecteurQuestion[0])
-    for val in range(1, len(vecteurQuestion)):
-        print(vecteurQuestion[val], end = ' ')
-    '''
+    rep = input("Voulez vous voir les vecteurs ? (répondre par 'oui' ou 'non') :")
+    if rep == "oui":
+        print(vecteurQuestion[0])
+        for val in range(1, len(vecteurQuestion)):
+            print(vecteurQuestion[val], end = ' ')
+    
     return vecteurQuestion
 
 
