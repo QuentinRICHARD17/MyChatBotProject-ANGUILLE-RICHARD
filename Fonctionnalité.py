@@ -1,49 +1,38 @@
 from FonctionsTraitementTextes import *
 from FonctionsExtractionNomsPresidents import *
 #1
-def AfficherMotsLesMoinsImportants(DictionnaireIDF, MatriceTF_IDF):
-
-    motsPasImportants = []
-    indice = 0
-
-    # Parcourir les mots du dictionnaire IDF
-    for mot in DictionnaireIDF.keys():
+def AfficherMotsLesMoinsImportants(MatriceTF_IDF):
+    for i in range(1, len(MatriceTF_IDF)):
         compteur = 0
-
-        # Vérifier si le mot a un TF-IDF nul dans tous les fichiers
-        for i in range(len(MatriceTF_IDF[indice])):
-            if MatriceTF_IDF[indice][i] == 0.0:
+        for j in range(1, len(MatriceTF_IDF[i])):
+            if MatriceTF_IDF[i][j] != 0.0:
                 compteur += 1
-        if compteur == len(MatriceTF_IDF[i]):
-            motsPasImportants.append(mot)
-        indice += 1
-
-    return motsPasImportants
-
-
+        if compteur == 0:
+            ListMotsPasImportant.append(MatriceTF_IDF[i][0])
+    print("Les mots les moins importants du dossier sont:", end=' ')
+    for k in range(len(ListMotsPasImportant) - 1):
+        print(ListMotsPasImportant[k], ",", end=' ')
+    print(ListMotsPasImportant[k + 1])
 
 #2
 
-def AfficherMotsAvecScoreTF_IDFLePlusHaut(DictionnaireIDF, MatriceTF_IDF):
-
+def AfficherMotsAvecScoreTF_IDFLePlusHaut(MatriceTF_IDF):
     ScoreLePlusHaut = 0
-    indice = 0
-
-    for mot, IDF in DictionnaireIDF.items():
-
-        # Vérifier si le mot a un TF-IDF plus élevé que l'actuel score le plus haut
-        for i in range(len(MatriceTF_IDF[indice])):
-            if MatriceTF_IDF[indice][i] > ScoreLePlusHaut:
-                ScoreLePlusHaut = MatriceTF_IDF[indice][i]
-                motIDF = mot
-        indice += 1
-
-    return motIDF
+    for i in range(1 , len(MatriceTF_IDF)):
+        for j in range(1, len(MatriceTF_IDF[i])):
+            if MatriceTF_IDF[i][j] >= ScoreLePlusHaut:
+                ScoreLePlusHaut = MatriceTF_IDF[i][j]
+    print("Le(s) mot(s) ayant le score TF-IDF le plus élevé est(sont):", end=' ')
+    for k in range(1 , len(MatriceTF_IDF)):
+        for l in range(1 , len(MatriceTF_IDF[k])):
+            if MatriceTF_IDF[k][l] == ScoreLePlusHaut:
+                print(MatriceTF_IDF[k][0], ' ', end=' ')
+    print()
 
 #3
 
 def AfficheMotLePlusRepeteParUnPresident(nom):
-    L = []
+    L =[]
     DCP = False  # Variable pour indiquer si le nom a été trouvé
 
     for i in range(len(files_names)):

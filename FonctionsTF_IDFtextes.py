@@ -2,25 +2,27 @@ from math import log
 from NotreLibrairie import *
 
 def CalculMatriceTF_IDF(DictionnaireIDF, ListeDicoTFtextes):
-    matriceTF_IDF = []
+
+    MatriceTF_IDF = []
+
+    MatriceTF_IDF.append([' '] + [i + 1 for i in range(len(ListeDicoTFtextes))])
 
     for cle in DictionnaireIDF.keys():
-        ligne = []
+        L = [cle]
         for i in range(len(ListeDicoTFtextes)):
             if cle in ListeDicoTFtextes[i]:
-                ligne.append(ListeDicoTFtextes[i][cle] * DictionnaireIDF[cle])
+                L.append(ListeDicoTFtextes[i][cle] * DictionnaireIDF[cle])
             else:
-                ligne.append(0.0)
-        matriceTF_IDF.append(ligne)
-
+                L.append(0.0)
+        MatriceTF_IDF.append(L)
     '''
     # Afficher la matrice
-    for j in range(len(matriceTF_IDF)):
-        for k in range(len(matriceTF_IDF[j])):
-            print(matriceTF_IDF[j][k], end=' ')
+    for j in range(len(MatriceTF_IDF)):
+        for k in range(len(MatriceTF_IDF[j])):
+            print(MatriceTF_IDF[j][k], end=' ')
         print()
     '''
-    return matriceTF_IDF
+    return MatriceTF_IDF
 
 
 
@@ -44,8 +46,8 @@ def CalculScoreTF(CleanedDirectory):
                 OccurencesMotsTexte[mot] = 1
         i = j + 1
     ListeDicoTFtextes.append(OccurencesMotsTexte)
-
     return ListeDicoTFtextes
+
 
 
 def CalculScoreIDF(ListeDicoTFtextes):
@@ -58,14 +60,9 @@ def CalculScoreIDF(ListeDicoTFtextes):
                 DictionnaireIDF[cle] += 1
             else:
                 DictionnaireIDF[cle] = 1
-
-    total_textes = len(ListeDicoTFtextes)
-
-    for mot, occurence in DictionnaireIDF.items():
-        DictionnaireIDF[mot] = log(total_textes / occurence)
-
+    for mot , occurence in DictionnaireIDF.items():
+        DictionnaireIDF[mot] = log(len(ListeDicoTFtextes)/occurence)
     return DictionnaireIDF
-
 
 
 
@@ -89,6 +86,3 @@ def TransposeeMatriceTF_IDF(matrice):
         print()
     '''
     return matriceTransposee
-
-
-

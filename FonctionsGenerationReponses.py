@@ -38,4 +38,3 @@ def generationReponses(matriceTexte, vecteurQuestion, listeNomFichier):
 
 
 
-
