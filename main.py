@@ -56,7 +56,7 @@ documentLePlusPertinent(matriceTransposee, vecteurQuestion, files_names)
 TF_IDFquestionLePlusEleve(vecteurQuestion)
 CalculScoreIDF(ListeDicoTFtextes)
 reponse = generationReponses(matriceTransposee, vecteurQuestion, files_names)
-print(reponse)
+MettreAme(questionTokenise, reponse)
 
 
 

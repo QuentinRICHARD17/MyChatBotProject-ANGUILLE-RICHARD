@@ -31,6 +31,20 @@ def generationReponses(matriceTexte, vecteurQuestion, listeNomFichier):
 
 
 
+def MettreAme(ListeQuestion, reponse):
+    question_starters = {
+        "comment": "Après analyse, ",
+        "pourquoi": "Car, ",
+        "peux-tu": "Oui, bien sûr!"
+    }
+    for i in ListeQuestion:
+        if i in question_starters.keys():
+            MotDebut = question_starters[i]
+            print(MotDebut + reponse)
+
+
+
+
 
 
 
