@@ -32,29 +32,6 @@ def SuppressionPonctuationEtEspacesQuestion(questionEnMinuscule):
     return questionEnMinuscule
 
 
-def ListerMotsQuestion(questionTraite):
-    listeMotsQuestion = []
-
-    # Initialisation compteur
-    i = 0
-    j = 0
-
-    # On parcours la question traité a l'aide de 2 compteurs afin de délimiter les mots
-    while i < len(questionTraite):
-        while i < len(questionTraite) and ord(questionTraite[i]) == 32:
-            i += 1
-        j = i
-        while j < len(questionTraite) and ord(questionTraite[j]) != 32:
-            j += 1
-        if i < j:
-            mot = questionTraite[i:j]
-            if mot not in listeMotsQuestion:
-                listeMotsQuestion.append(mot)
-        i = j + 1
-
-    return listeMotsQuestion
-
-
 def IdentificationMotsQuestionDocuments(questionTokenise, ListeDicoTFtextes):
 
     motsPresent = set()
