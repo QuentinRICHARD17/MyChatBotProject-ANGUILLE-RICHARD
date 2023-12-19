@@ -11,7 +11,7 @@ def TokenisationQuestion(question):
     questionTraite = SuppressionPonctuationEtEspacesQuestion(questionEnMinuscule)
 
     # Lister les mots de la question
-    questionTokenise = ListerMotsQuestion(questionTraite)
+    questionTokenise = questionTraite.split()
 
     return questionTokenise
 
