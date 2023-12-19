@@ -29,8 +29,6 @@ def generationReponses(matriceTexte, vecteurQuestion, listeNomFichier):
     return "Aucune phrase n'a été trouvé avec le mot recherché"
 
 
-
-
 def MettreAme(ListeQuestion, reponse):
     question_starters = {
         "comment": "Après analyse, ",
@@ -40,6 +38,5 @@ def MettreAme(ListeQuestion, reponse):
     for i in ListeQuestion:
         if i in question_starters.keys():
             MotDebut = question_starters[i]
-            print(MotDebut + reponse)
-        else:
-            print(reponse)
+            return MotDebut + reponse
+    return reponse
