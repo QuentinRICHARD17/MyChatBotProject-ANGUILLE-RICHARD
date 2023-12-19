@@ -54,9 +54,8 @@ NormeVecteurQuestion(vecteurQuestion)
 CalculSimilarite(matriceTransposee, vecteurQuestion)
 documentLePlusPertinent(matriceTransposee, vecteurQuestion, files_names)
 TF_IDFquestionLePlusEleve(vecteurQuestion)
-CalculScoreIDF(ListeDicoTFtextes)
 reponse = generationReponses(matriceTransposee, vecteurQuestion, files_names)
-MettreAme(questionTokenise, reponse)
+print(MettreAme(questionTokenise, reponse))
 
 
 
