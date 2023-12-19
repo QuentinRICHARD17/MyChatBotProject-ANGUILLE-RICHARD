@@ -14,4 +14,4 @@ Vous retrouverez donc dans ce dossier les différents fichiers qui composent not
 - Main
 - NotreLibrairie
 
-Projet maintenue par Dorian Anguille et Quentin Richard
+Projet développé par Dorian Anguille et Quentin Richard
