@@ -5,6 +5,7 @@ from FonctionsTF_IDFquestion import *
 from FonctionsCalculSimilarité import *
 from FonctionsGenerationReponses import *
 
+
 files_names = list_of_files(directory, "txt")
 print("Listes des noms des textes :")
 print(files_names)
@@ -54,9 +55,11 @@ NormeVecteurQuestion(vecteurQuestion)
 CalculSimilarite(matriceTransposee, vecteurQuestion)
 documentLePlusPertinent(matriceTransposee, vecteurQuestion, files_names)
 TF_IDFquestionLePlusEleve(vecteurQuestion)
-CalculScoreIDF(ListeDicoTFtextes)
 reponse = generationReponses(matriceTransposee, vecteurQuestion, files_names)
-MettreAme(questionTokenise, reponse)
+print(MettreAme(questionTokenise, reponse))
+
+
+
 
 
 
